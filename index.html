@@ -1,16 +1,345 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto Hub - Pre Owned vehicle Market place</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>AutoHub | Pre-Owned Vehicle Marketplace</title>
+    <!-- Stylesheet Link -->
+     <link rel="stylesheet" href="./index.css">
 
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Only keeping the dark mode enabler
+        tailwind.config = { darkMode: 'class' }
+    </script>
 </head>
-<body>
-    <h1>Hello</h1>
+
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 font-sans">
+
+    <!-- Navigation Bar -->
+    <nav
+        class="bg-white dark:bg-gray-900 p-4 flex items-center justify-between shadow-md sticky top-0 z-10 border-b border-gray-200 dark:border-gray-800">
+        <a href="#" class="text-2xl font-bold text-blue-600 dark:text-blue-500">AutoHub</a>
+
+        <ul class="hidden md:flex gap-8 font-medium">
+            <li><a class="hover:text-blue-600 dark:hover:text-blue-500" href="index.html">Home</a></li>
+            <li><a class="hover:text-blue-600 dark:hover:text-blue-500" href="cars.html">Cars</a></li>
+            <li><a class="hover:text-blue-600 dark:hover:text-blue-500" href="bikes.html">Bikes</a></li>
+            <li><a class="hover:text-blue-600 dark:hover:text-blue-500" href="sell-vehicle.html">Sell Vehicle</a></li>
+            <li><a class="hover:text-blue-600 dark:hover:text-blue-500" href="about.html">About Us</a></li>
+        </ul>
+
+        <div class="flex items-center gap-4">
+            <!-- Theme Toggle Button -->
+            <button id="theme-toggle" class="p-2 bg-gray-200 dark:bg-gray-800 rounded-lg">
+                <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                </svg>
+                <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                        d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                        fill-rule="evenodd" clip-rule="evenodd"></path>
+                </svg>
+            </button>
+            <p class="md:hidden cursor-pointer font-bold text-xl" id="viewBox">☰</p>
+        </div>
+    </nav>
+
+    <!-- Size Navbar -->
+    <section id="sidenav" class="bg-gray-300 fixed top-0 z-20 right-0 p-10 transition-all duration-900 dark:bg-black"
+        style="width: 50%;height: 100%;right: -50%;">
+        <div class="text-right cursor-pointer pb-5 inline hover:text-gray-400" id="exit">
+            <p>X</p>
+        </div>
+        <ul class="gap-7 text-gray-600 flex flex-col items-center dark:text-white">
+            <li><a class="hover:text-blue-600 dark:hover:text-blue-500" href="index.html">Home</a></li>
+            <li><a class="hover:text-blue-600 dark:hover:text-blue-500" href="cars.html">Cars</a></li>
+            <li><a class="hover:text-blue-600 dark:hover:text-blue-500" href="bikes.html">Bikes</a></li>
+            <li><a class="hover:text-blue-600 dark:hover:text-blue-500" href="sell-vehicle.html">Sell Vehicle</a></li>
+            <li><a class="hover:text-blue-600 dark:hover:text-blue-500" href="about.html">About Us</a></li>
+        </ul>
+    </section>
+
+    <!-- Header / Hero Section -->
+    <section
+        class="bg-gray-900 dark:bg-black text-white p-10 md:p-24 text-center bg-black bg-cover bg-center bg-blend-overlay">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Find Your Dream Vehicle Today</h1>
+        <p class="text-lg text-gray-300 mb-8">Discover top-quality pre-owned cars and bikes at unbeatable prices.</p>
+
+        <form
+            class="bg-white dark:bg-gray-800 p-4 rounded-xl flex flex-col md:flex-row gap-4 max-w-4xl mx-auto shadow-xl">
+            <select
+                class="p-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded text-black dark:text-white w-full md:w-1/4">
+                <option>All Vehicles</option>
+                <option>Cars</option>
+                <option>Bikes</option>
+            </select>
+            <input type="text" placeholder="Search by brand, model, or keyword..."
+                class="p-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded text-black dark:text-white w-full md:w-2/4">
+            <button type="button"
+                class="bg-blue-600 text-white p-3 rounded w-full md:w-1/4 hover:bg-blue-700">Search</button>
+        </form>
+    </section>
+
+    <!-- Featured Vehicles Section -->
+    <section class="p-5 md:p-16 bg-white dark:bg-gray-900 text-center">
+        <h2 class="text-3xl font-bold mb-4">Featured Vehicles</h2>
+        <p class="text-gray-600 dark:text-gray-400 mb-8">Handpicked selections just for you.</p>
+
+        <div class="flex justify-center gap-8 border-b border-gray-200 dark:border-gray-700 pb-2 mb-10">
+            <h3 class="cursor-pointer text-lg font-medium tab-active category-tab" data-target="cars">Featured Cars</h3>
+            <h3 class="cursor-pointer text-lg font-medium text-gray-500 dark:text-gray-400 category-tab"
+                data-target="bikes">Featured Bikes</h3>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-left">
+            <!-- Car Card 1 -->
+            <div
+                class="vehicle-card cars border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden hover:shadow-xl bg-white dark:bg-gray-800 flex flex-col">
+                <img src="./images/2021 Toyota Camry SE.png" class="w-full h-48 object-cover">
+                <div class="p-5 flex-grow flex flex-col">
+                    <h3 class="font-bold text-lg">2021 Toyota Camry SE</h3>
+                    <p class="text-2xl font-bold text-blue-600 dark:text-blue-400 my-2">$22,500</p>
+                    <div class="grid grid-cols-2 gap-2 text-sm text-gray-600 dark:text-gray-400 mb-4">
+                        <p>24,000 km</p>
+                        <p>Petrol</p>
+                        <p>Automatic</p>
+                        <p>2021</p>
+                    </div>
+                    <a href="vehicle-details.html"
+                        class="mt-auto bg-gray-100 dark:bg-gray-700 hover:bg-blue-600 hover:text-white text-center p-2 rounded block">View
+                        Details</a>
+                </div>
+            </div>
+
+            <!-- Car Card 2 -->
+            <div
+                class="vehicle-card cars border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden hover:shadow-xl bg-white dark:bg-gray-800 flex flex-col">
+                <img src="./images/2020 Honda Civic EX.png" class="w-full h-48 object-cover">
+                <div class="p-5 flex-grow flex flex-col">
+                    <h3 class="font-bold text-lg">2020 Honda Civic EX</h3>
+                    <p class="text-2xl font-bold text-blue-600 dark:text-blue-400 my-2">$19,200</p>
+                    <div class="grid grid-cols-2 gap-2 text-sm text-gray-600 dark:text-gray-400 mb-4">
+                        <p>35,000 km</p>
+                        <p>Petrol</p>
+                        <p>CVT</p>
+                        <p>2020</p>
+                    </div>
+                    <a href="vehicle-details.html"
+                        class="mt-auto bg-gray-100 dark:bg-gray-700 hover:bg-blue-600 hover:text-white text-center p-2 rounded block">View
+                        Details</a>
+                </div>
+            </div>
+
+            <!-- Car Card 3 -->
+            <div
+                class="vehicle-card cars border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden hover:shadow-xl bg-white dark:bg-gray-800 flex flex-col">
+                <img src="./images/2019 Ford Mustang GT.png" class="w-full h-48 object-cover">
+                <div class="p-5 flex-grow flex flex-col">
+                    <h3 class="font-bold text-lg">2019 Ford Mustang GT</h3>
+                    <p class="text-2xl font-bold text-blue-600 dark:text-blue-400 my-2">$35,000</p>
+                    <div class="grid grid-cols-2 gap-2 text-sm text-gray-600 dark:text-gray-400 mb-4">
+                        <p>18,500 km</p>
+                        <p>Petrol</p>
+                        <p>Manual</p>
+                        <p>2019</p>
+                    </div>
+                    <a href="vehicle-details.html"
+                        class="mt-auto bg-gray-100 dark:bg-gray-700 hover:bg-blue-600 hover:text-white text-center p-2 rounded block">View
+                        Details</a>
+                </div>
+            </div>
+
+            <!-- Bike Card 1 -->
+            <div
+                class="vehicle-card bikes hidden border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden hover:shadow-xl bg-white dark:bg-gray-800 flex flex-col">
+                <img src="./images/2022 Yamaha YZF R15.png" class="w-full h-48 object-cover">
+                <div class="p-5 flex-grow flex flex-col">
+                    <h3 class="font-bold text-lg">2022 Yamaha YZF R15</h3>
+                    <p class="text-2xl font-bold text-blue-600 dark:text-blue-400 my-2">$2,100</p>
+                    <div class="grid grid-cols-2 gap-2 text-sm text-gray-600 dark:text-gray-400 mb-4">
+                        <p>8,000 km</p>
+                        <p>Manual</p>
+                        <p>Petrol</p>
+                        <p>2022</p>
+                    </div>
+                    <a href="vehicle-details.html"
+                        class="mt-auto bg-gray-100 dark:bg-gray-700 hover:bg-blue-600 hover:text-white text-center p-2 rounded block">View
+                        Details</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-10 text-center">
+            <a href="cars.html"
+                class="inline-block text-brand-600 mb-5 dark:text-brand-400 font-semibold hover:underline">View cars
+                inventory &rarr;</a><br>
+            <a href="bikes.html"
+                class="inline-block text-brand-600 dark:text-brand-400 font-semibold hover:underline">View bikes
+                inventory &rarr;</a>
+        </div>
+    </section>
+
+    <!-- Latest Arrivals Section -->
+    <section class="p-5 md:p-16 bg-gray-50 dark:bg-gray-800">
+        <h2 class="text-3xl font-bold mb-2">Latest Arrivals</h2>
+        <p class="text-gray-600 dark:text-gray-400 mb-10">Fresh inventory added this week.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Arrival 1 -->
+            <div
+                class="bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-xl overflow-hidden shadow hover:shadow-lg">
+                <div class="relative">
+                    <img src="./images/2023 Hyundai Tucson.png"
+                        class="w-full h-48 object-cover">
+                    <span
+                        class="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">NEW</span>
+                </div>
+                <div class="p-5">
+                    <h3 class="text-lg font-bold">2023 Hyundai Tucson</h3>
+                    <p class="text-xl font-bold text-blue-600 dark:text-blue-400 my-2">$28,900</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-300 mb-4">12,000 km • Automatic • Petrol</p>
+                    <a href="vehicle-details.html"
+                        class="block text-center border border-blue-600 text-blue-400 hover:bg-blue-600 hover:text-white p-2 rounded">Enquire
+                        Now</a>
+                </div>
+            </div>
+
+            <!-- Arrival 2 -->
+            <div
+                class="bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-xl overflow-hidden shadow hover:shadow-lg">
+                <div class="relative">
+                    <img src="./images/2021 Royal Enfield Classic.png"
+                        class="w-full h-48 object-cover">
+                    <span
+                        class="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">NEW</span>
+                </div>
+                <div class="p-5">
+                    <h3 class="text-lg font-bold">2021 Royal Enfield Classic</h3>
+                    <p class="text-xl font-bold text-blue-600 dark:text-blue-400 my-2">$2,500</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-300 mb-4">15,000 km • Manual • Petrol</p>
+                    <a href="vehicle-details.html"
+                        class="block text-center border border-blue-600 text-blue-400 hover:bg-blue-600 hover:text-white p-2 rounded">Enquire
+                        Now</a>
+                </div>
+            </div>
+
+            <!-- Arrival 3 -->
+            <div
+                class="bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-xl overflow-hidden shadow hover:shadow-lg">
+                <div class="relative">
+                    <img src="./images/2022 Kia Seltos GTX.png"
+                        class="w-full h-48 object-cover">
+                    <span
+                        class="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">NEW</span>
+                </div>
+                <div class="p-5">
+                    <h3 class="text-lg font-bold">2022 Kia Seltos GTX</h3>
+                    <p class="text-xl font-bold text-blue-600 dark:text-blue-400 my-2">$21,000</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-300 mb-4">22,500 km • Automatic • Diesel</p>
+                    <a href="vehicle-details.html"
+                        class="block text-center border border-blue-600 text-blue-400 hover:bg-blue-600 hover:text-white p-2 rounded">Enquire
+                        Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="p-5 md:p-16 bg-white dark:bg-gray-900 text-center">
+        <h2 class="text-3xl font-bold">Why Choose AutoHub?</h2>
+        <p class="text-gray-600 dark:text-gray-400 mb-10">We make buying and selling pre-owned vehicles a breeze.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl">
+                <div
+                    class="w-14 h-14 mx-auto bg-brand-100 dark:bg-brand-900 text-brand-600 dark:text-brand-400 rounded-full flex items-center justify-center mb-4">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-lg font-bold mb-2">Verified Vehicles</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm">Strict 150-point inspection before listing.</p>
+            </div>
+            <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl">
+                <div
+                    class="w-14 h-14 mx-auto bg-brand-100 dark:bg-brand-900 text-brand-600 dark:text-brand-400 rounded-full flex items-center justify-center mb-4">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                        </path>
+                    </svg>
+                </div>
+                <h3 class="text-lg font-bold mb-2">Best Prices</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm">Dynamic pricing ensures the fairest market value.
+                </p>
+            </div>
+            <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl">
+                <div
+                    class="w-14 h-14 mx-auto bg-brand-100 dark:bg-brand-900 text-brand-600 dark:text-brand-400 rounded-full flex items-center justify-center mb-4">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-lg font-bold mb-2">Fast Financing</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm">Quick and easy loan approvals with our partners.</p>
+            </div>
+            <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl">
+                <div
+                    class="w-14 h-14 mx-auto bg-brand-100 dark:bg-brand-900 text-brand-600 dark:text-brand-400 rounded-full flex items-center justify-center mb-4">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z">
+                        </path>
+                    </svg>
+                </div>
+                <h3 class="text-lg font-bold mb-2">24/7 Support</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm">Our customer success team is always ready.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white p-10 mt-10">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 border-b border-gray-800 pb-8">
+            <div>
+                <h2 class="text-2xl font-bold mb-4 text-blue-500">AutoHub</h2>
+                <p class="text-gray-400 text-sm">The most trusted marketplace for pre-owned cars and bikes.</p>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                <ul class="text-gray-400 text-sm space-y-2">
+                    <li><a href="cars.html" class="hover:text-white">Search Cars</a></li>
+                    <li><a href="bikes.html" class="hover:text-white">Search Bikes</a></li>
+                    <li><a href="sell-vehicle.html" class="hover:text-white">Sell Your Vehicle</a></li>
+                    <li><a href="about.html" class="hover:text-white">About Us</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-4">Support</h4>
+                <ul class="text-gray-400 text-sm space-y-2">
+                    <li><a href="enquiry.html" class="hover:text-white">Contact Us</a></li>
+                    <li><a href="about.html" class="hover:text-white">FAQs</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-4">Contact</h4>
+                <ul class="text-gray-400 text-sm space-y-2">
+                    <li>999, Vijay Auto Avenue, Ajith Motor City, Thalapathy Nadu-999999.</li>
+                    <li>support@autohub.com</li>
+                    <li>+91 9876543210</li>
+                </ul>
+            </div>
+        </div>
+        <p class="text-center text-gray-500 text-sm">&copy; 2026 AutoHub Marketplace</p>
+    </footer>
+
+    <!-- Interactive Scripts -->
+     <script src="./index.js"></script>
 </body>
+
 </html>
