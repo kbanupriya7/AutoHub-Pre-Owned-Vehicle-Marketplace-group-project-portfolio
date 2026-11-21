@@ -1,0 +1,271 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sell Your Vehicle | AutoHub</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md p-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+
+            <a href="index.html" class="text-2xl font-bold text-blue-700">
+                AutoHub<span class="text-orange-500">.</span>
+            </a>
+
+            <div class="hidden md:flex items-center gap-8 font-medium">
+                <a href="index.html" class="hover:text-blue-600">Home</a>
+                <a href="cars.html" class="hover:text-blue-600">Cars</a>
+                <a href="bikes.html" class="hover:text-blue-600">Bikes</a>
+                <a href="about.html" class="hover:text-blue-600">About</a>
+                <a href="sell-vehicle.html" class="text-blue-700 font-bold">Sell Vehicle</a>
+            </div>
+
+            <a href="sell-vehicle.html"
+                class="bg-blue-700 text-white px-4 py-2 rounded-lg hover:bg-blue-800">
+                Sell Now
+            </a>
+
+        </div>
+    </nav>
+
+
+    <!-- Page Heading -->
+    <section class="bg-blue-900 text-white text-center p-10 ">
+        <h1 class="text-3xl md:text-4xl font-bold">Sell Your Vehicle</h1>
+
+        <p class="mt-3 text-gray-200">
+            List your car or bike on AutoHub and connect with potential buyers.
+        </p>
+    </section>
+
+
+    <!-- Form Section -->
+    <section class="max-w-4xl mx-auto p-5 md:p-8">
+
+        <form id="sell-form" class="bg-white p-6 md:p-10 rounded-xl shadow-md">
+
+            <!-- Vehicle Information -->
+            <h2 class="text-2xl font-bold mb-6 text-blue-800">
+                Vehicle Information
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+                <!-- Category -->
+                <div>
+                    <label for="category" class="form-label">Vehicle Category *</label>
+
+                    <select id="category" class="form-input">
+                        <option value="">Select Category</option>
+                        <option value="Car">Car</option>
+                        <option value="Bike">Bike</option>
+                    </select>
+
+                    <p class="error" id="category-error"></p>
+                </div>
+
+
+                <!-- Brand -->
+                <div>
+                    <label for="brand" class="form-label">Brand *</label>
+
+                    <input type="text" id="brand"
+                        class="form-input" placeholder="Example: Hyundai">
+
+                    <p class="error" id="brand-error"></p>
+                </div>
+
+
+                <!-- Model -->
+                <div>
+                    <label for="model" class="form-label">Model *</label>
+
+                    <input type="text" id="model"
+                        class="form-input" placeholder="Example: Creta">
+
+                    <p class="error" id="model-error"></p>
+                </div>
+
+
+                <!-- Manufacturing Year -->
+                <div>
+                    <label for="year" class="form-label">Manufacturing Year *</label>
+
+                    <input type="number" id="year"
+                        class="form-input" placeholder="Example: 2022">
+
+                    <p class="error" id="year-error"></p>
+                </div>
+
+
+                <!-- Expected Price -->
+                <div>
+                    <label for="price" class="form-label">Expected Selling Price (₹) *</label>
+
+                    <input type="number" id="price"
+                        class="form-input" placeholder="Example: 750000">
+
+                    <p class="error" id="price-error"></p>
+                </div>
+
+
+                <!-- Kilometres -->
+                <div>
+                    <label for="km" class="form-label">Kilometres Driven *</label>
+
+                    <input type="number" id="km"
+                        class="form-input" placeholder="Example: 25000">
+
+                    <p class="error" id="km-error"></p>
+                </div>
+
+            </div>
+
+
+            <!-- Image Upload -->
+            <div class="mt-8">
+
+                <h2 class="text-2xl font-bold mb-4 text-blue-800">
+                    Upload Vehicle Images
+                </h2>
+
+                <label for="vehicle-images"
+                    class="block border-2 border-dashed border-blue-300 rounded-xl p-8 text-center cursor-pointer hover:bg-blue-50">
+
+                    <span class="text-4xl">📷</span>
+
+                    <p class="font-semibold mt-3">
+                        Click to upload vehicle images
+                    </p>
+
+                    <p class="text-gray-500 text-sm mt-2">
+                        You can select multiple images (maximum 5).
+                    </p>
+
+                    <input type="file" id="vehicle-images"
+                        accept="image/*" multiple class="hidden">
+
+                </label>
+
+                <p class="error" id="image-error"></p>
+
+                <!-- Image Preview -->
+                <div id="image-preview"
+                    class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-5">
+                </div>
+
+            </div>
+
+
+            <!-- Seller Information -->
+            <div class="mt-10">
+
+                <h2 class="text-2xl font-bold mb-6 text-blue-800">
+                    Seller Information
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+                    <!-- Seller Name -->
+                    <div>
+                        <label for="seller-name" class="form-label">Full Name *</label>
+
+                        <input type="text" id="seller-name"
+                            class="form-input" placeholder="Enter your name">
+
+                        <p class="error" id="name-error"></p>
+                    </div>
+
+
+                    <!-- Phone -->
+                    <div>
+                        <label for="phone" class="form-label">Phone Number *</label>
+
+                        <input type="tel" id="phone"
+                            class="form-input" placeholder="10-digit mobile number">
+
+                        <p class="error" id="phone-error"></p>
+                    </div>
+
+
+                    <!-- Email -->
+                    <div>
+                        <label for="email" class="form-label">Email Address *</label>
+
+                        <input type="email" id="email"
+                            class="form-input" placeholder="example@gmail.com">
+
+                        <p class="error" id="email-error"></p>
+                    </div>
+
+
+                    <!-- Location -->
+                    <div>
+                        <label for="location" class="form-label">Location *</label>
+
+                        <input type="text" id="location"
+                            class="form-input" placeholder="City / District">
+
+                        <p class="error" id="location-error"></p>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Submit Button -->
+            <div class="mt-10">
+
+                <button type="submit" id="submit-btn"
+                    class="w-full bg-blue-700 text-white py-3 rounded-lg font-bold text-lg hover:bg-blue-800 transition">
+                    Submit Vehicle Details
+                </button>
+
+                <p id="success-message"
+                    class="hidden text-center text-green-700 bg-green-100 p-4 rounded-lg mt-5 font-semibold">
+                    Your vehicle details have been submitted successfully!
+                </p>
+
+            </div>
+
+        </form>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white text-center p-6 mt-10">
+
+        <h2 class="text-2xl font-bold">AutoHub</h2>
+
+        <p class="text-gray-300 mt-2">
+            Your trusted destination for pre-owned vehicles.
+        </p>
+
+        <p class="text-gray-400 text-sm mt-4">
+            © 2026 AutoHub. All rights reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script src="./script.js"></script>
+
+</body>
+</html>
