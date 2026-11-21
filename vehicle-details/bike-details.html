@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="View bike photos, highlights, overview, quality report and features on AutoHub.">
+  <title>Used Bike Details | AutoHub</title>
+  <link rel="stylesheet" href="cardetails.css">
+</head>
+<body data-vehicle-type="bike">
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="AutoHub home">Auto<span>Hub</span></a>
+    <nav class="main-nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="cars.html">Cars</a><a href="bikes.html">Bikes</a></nav>
+  </header>
+  <main class="page-container">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><a href="bikes.html">Used bikes</a><span>/</span><span id="breadcrumbName">Vehicle</span></div>
+    <section class="listing-heading"><div><p class="eyebrow">PRE-OWNED BIKE</p><h1 id="vehicleTitle">Loading vehicle…</h1><p class="muted" id="vehicleVariant"></p></div><span class="verified-pill">Listing details</span></section>
+    <section class="listing-grid" aria-label="Vehicle photos and price">
+      <div class="gallery-card">
+        <div class="main-photo" id="mainPhoto"><img id="galleryMainImage" src="" alt="Vehicle photo"><span class="photo-tag">PRE-OWNED BIKE</span><span class="photo-counter" id="photoCounter">1 / 6</span></div>
+        <div class="thumbnail-row" id="thumbnailRow" aria-label="Choose vehicle photo"></div>
+        <p class="gallery-caption">PHOTOS · EXTERIOR &amp; INTERIOR</p>
+      </div>
+      <aside class="price-card">
+        <span class="status-pill">Listing information</span><p class="price-label">Listed price</p><h2 class="vehicle-price" id="vehiclePrice"></h2>
+        <p class="muted small">Sample listing price. Confirm with the seller.</p><div class="price-divider"></div>
+        <div class="summary-line"><span>Driven</span><strong id="vehicleKm"></strong></div>
+        <div class="summary-line"><span>Fuel</span><strong id="vehicleFuel"></strong></div>
+        <div class="summary-line"><span>Transmission</span><strong id="vehicleTransmission"></strong></div>
+        <div class="summary-line"><span>Registration</span><strong id="vehicleRegistration"></strong></div>
+        <div class="summary-line"><span>Location</span><strong id="vehicleLocation"></strong></div>
+        <p class="fine-print">Demo inventory. Verify all details and documents before purchase.</p>
+      </aside>
+    </section>
+    <nav class="section-nav" aria-label="Page sections"><a href="#highlights">Highlights</a><a href="#overview">Overview</a><a href="#quality">Quality report</a><a href="#features">Features</a></nav>
+    <section class="content-card" id="highlights"><div class="section-title"><div><p class="eyebrow">AT A GLANCE</p><h2>Bike highlights</h2></div></div><div class="highlight-grid" id="highlightGrid"></div></section>
+    <section class="content-card" id="overview"><div class="section-title"><div><p class="eyebrow">VEHICLE INFORMATION</p><h2>Bike overview</h2></div></div><div class="overview-grid" id="overviewGrid"></div><p class="data-note">Sample listing data. Replace with verified vehicle documents and inspection details.</p></section>
+    <section class="content-card" id="quality"><div class="section-title"><div><p class="eyebrow">VEHICLE CONDITION</p><h2>Quality report</h2></div></div><p class="muted section-description">Inspection status must be completed by an authorised inspector. The points below are placeholders, not certification.</p><div class="quality-points" id="qualityPoints"></div></section>
+    <section class="content-card" id="features"><div class="section-title"><div><p class="eyebrow">COMFORT &amp; CONVENIENCE</p><h2>Bike features</h2></div></div><p class="muted section-description">Sample feature list. Confirm equipment on the exact vehicle variant before publishing.</p><div class="feature-list" id="featureList"></div></section>
+  </main>
+  <footer class="site-footer"><a class="brand footer-brand" href="index.html">Auto<span>Hub</span></a><p>Your destination for pre-owned cars and bikes.</p><small>© 2026 AutoHub. Demo listings; verify all vehicle information before purchase.</small></footer>
+  <script src="vehicles-data.js"></script><script src="car-details.js"></script>
+</body>
+</html>
