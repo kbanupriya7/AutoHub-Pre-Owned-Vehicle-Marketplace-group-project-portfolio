@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cars | AutoHub</title>
+
+    <!-- Stylesheet Link -->
+    <link rel="stylesheet" href="./style.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Only keeping the dark mode enabler
+        tailwind.config = { darkMode: 'class' }
+    </script>
+</head>
+
+<body data-type="car" class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 font-sans">
+
+    <!-- Navigation Bar -->
+    <nav
+        class="bg-white dark:bg-gray-900 p-4 flex items-center justify-between shadow-md sticky top-0 z-10 border-b border-gray-200 dark:border-gray-800">
+        <a href="index.html" class="text-2xl font-bold text-blue-600 dark:text-blue-500">Auto<span class="text-red-500 dark:text-red-500">Hub.</a>
+
+        <ul class="hidden md:flex gap-8 font-medium">
+            <li><a class="hover:text-blue-600 dark:hover:text-blue-500" href="index.html">Home</a></li>
+            <li><a class="text-blue-600 dark:text-blue-500 font-bold hover:text-blue-600 dark:hover:text-blue-500" href="cars.html">Cars</a></li>
+            <li><a class=" hover:text-blue-600 dark:hover:text-blue-500" href="bikes.html">Bikes</a></li>
+            <li><a class="hover:text-blue-600 dark:hover:text-blue-500" href="sell-vehicle.html">Sell My Vehicle</a></li>
+            <li><a class="hover:text-blue-600 dark:hover:text-blue-500" href="about.html">About Us</a></li>
+        </ul>
+
+        <div class="flex items-center gap-4">
+            <!-- Theme Toggle Button -->
+            <button id="theme-toggle" class="p-2 bg-gray-200 dark:bg-gray-800 rounded-lg" aria-label="Toggle theme">
+                <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                </svg>
+                <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                        d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                        fill-rule="evenodd" clip-rule="evenodd"></path>
+                </svg>
+            </button>
+            <p class="md:hidden cursor-pointer font-bold text-xl" id="viewBox">☰</p>
+        </div>
+    </nav>
+
+    <!-- Side Navbar -->
+    <section id="sidenav" class="bg-gray-300 fixed top-0 z-20 right-0 p-10 transition-all duration-900 dark:bg-black"
+        style="width: 50%;height: 100%;right: -50%;">
+        <div class="text-right cursor-pointer pb-5 inline hover:text-gray-400" id="exit">
+            <p>X</p>
+        </div>
+        <ul class="gap-7 text-gray-600 flex flex-col items-center dark:text-white">
+            <li><a class="hover:text-blue-600 dark:hover:text-blue-500" href="index.html">Home</a></li>
+            <li><a class="hover:text-blue-600 dark:hover:text-blue-500" href="cars.html">Cars</a></li>
+            <li><a class="hover:text-blue-600 dark:hover:text-blue-500" href="bikes.html">Bikes</a></li>
+            <li><a class="hover:text-blue-600 dark:hover:text-blue-500" href="sell-vehicle.html">Sell Vehicle</a></li>
+            <li><a class="hover:text-blue-600 dark:hover:text-blue-500" href="about.html">About Us</a></li>
+        </ul>
+    </section>
+
+    <!-- Page Heading -->
+    <section class="bg-gray-900 dark:bg-black text-white p-10 text-center">
+        <h1 class="text-3xl md:text-4xl font-bold mb-2">Pre-Owned Cars</h1>
+        <p class="text-gray-300">Browse verified used cars and find the one that fits your budget.</p>
+    </section>
+
+    <!-- Listing Section -->
+    <main class="max-w-7xl mx-auto p-5 md:p-8 flex flex-col md:flex-row gap-8">
+
+        <!-- Filters -->
+        <aside class="md:w-1/4">
+            <button id="filter-toggle" type="button"
+                class="md:hidden w-full mb-4 bg-blue-600 text-white p-3 rounded-lg font-medium">Show / Hide Filters</button>
+
+            <div id="filter-panel"
+                class="hidden md:block bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-5 md:sticky md:top-24">
+                <div class="flex justify-between items-center mb-3">
+                    <h2 class="text-xl font-bold">Filters</h2>
+                    <button id="clear-filters" type="button" class="text-sm text-blue-600 dark:text-blue-400 hover:underline">Clear all</button>
+                </div>
+
+                <!-- Brand -->
+                <h3 class="font-semibold mt-4 mb-1 border-t border-gray-200 dark:border-gray-700 pt-4">Brand</h3>
+                <div id="brand-options"></div>
+
+                <!-- Fuel type -->
+                <h3 class="font-semibold mt-4 mb-1 border-t border-gray-200 dark:border-gray-700 pt-4">Fuel Type</h3>
+                <div id="fuel-options"></div>
+
+                <!-- Gear type -->
+                <h3 class="font-semibold mt-4 mb-1 border-t border-gray-200 dark:border-gray-700 pt-4">Gear Type</h3>
+                <div id="gear-options"></div>
+
+                <!-- Budget -->
+                <h3 class="font-semibold mt-4 mb-2 border-t border-gray-200 dark:border-gray-700 pt-4">Budget (₹ Lakh)</h3>
+                <div class="flex items-center gap-2">
+                    <input id="budget-min" type="number" min="0" step="0.1" placeholder="Min"
+                        class="w-full p-2 text-sm bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded text-black dark:text-white">
+                    <span class="text-gray-400">–</span>
+                    <input id="budget-max" type="number" min="0" step="0.1" placeholder="Max"
+                        class="w-full p-2 text-sm bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded text-black dark:text-white">
+                </div>
+                <p id="budget-error" class="text-red-600 text-xs mt-1 min-h-4"></p>
+                <div class="flex flex-wrap gap-2 mt-2">
+                    <button type="button" class="budget-chip text-xs px-3 py-1 rounded-full border border-gray-300 dark:border-gray-600 hover:bg-blue-600 hover:text-white hover:border-blue-600" data-min="" data-max="6">Under ₹6L</button>
+                    <button type="button" class="budget-chip text-xs px-3 py-1 rounded-full border border-gray-300 dark:border-gray-600 hover:bg-blue-600 hover:text-white hover:border-blue-600" data-min="6" data-max="8">₹6L – ₹8L</button>
+                    <button type="button" class="budget-chip text-xs px-3 py-1 rounded-full border border-gray-300 dark:border-gray-600 hover:bg-blue-600 hover:text-white hover:border-blue-600" data-min="8" data-max="12">₹8L – ₹12L</button>
+                    <button type="button" class="budget-chip text-xs px-3 py-1 rounded-full border border-gray-300 dark:border-gray-600 hover:bg-blue-600 hover:text-white hover:border-blue-600" data-min="12" data-max="">Above ₹12L</button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Results -->
+        <section class="md:w-3/4">
+            <div class="flex flex-col sm:flex-row gap-3 mb-4">
+                <form id="search-form" class="flex-1">
+                    <input id="search-input" type="text" placeholder="Search cars by name, brand, fuel, gear or year..."
+                        class="p-3 w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg text-black dark:text-white">
+                </form>
+                <select id="sort-select"
+                    class="p-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg text-black dark:text-white">
+                    <option value="default">Sort: Featured</option>
+                    <option value="low">Price: Low to High</option>
+                    <option value="high">Price: High to Low</option>
+                    <option value="newest">Newest First</option>
+                    <option value="km">Lowest Kilometres</option>
+                </select>
+            </div>
+
+            <p id="result-count" class="text-sm text-gray-500 dark:text-gray-400 mb-4"></p>
+
+            <div id="vehicle-grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6"></div>
+
+            <div id="empty-state" class="hidden text-center p-12 bg-white dark:bg-gray-800 border border-dashed border-gray-300 dark:border-gray-600 rounded-xl">
+                <h3 class="text-xl font-bold mb-2">No cars found</h3>
+                <p class="text-gray-500 dark:text-gray-400 mb-4">Try a different search or remove some filters.</p>
+                <button id="empty-clear" type="button" class="bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700">Clear filters</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white p-10 mt-10">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 border-b border-gray-800 pb-8">
+            <div>
+                <h2 class="text-2xl font-bold mb-4 text-blue-500">AutoHub</h2>
+                <p class="text-gray-400 text-sm">The most trusted marketplace for pre-owned cars and bikes.</p>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                <ul class="text-gray-400 text-sm space-y-2">
+                    <li><a href="cars.html" class="hover:text-white">Search Cars</a></li>
+                    <li><a href="bikes.html" class="hover:text-white">Search Bikes</a></li>
+                    <li><a href="sell-vehicle.html" class="hover:text-white">Sell Your Vehicle</a></li>
+                    <li><a href="about.html" class="hover:text-white">About Us</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-4">Support</h4>
+                <ul class="text-gray-400 text-sm space-y-2">
+                    <li><a href="about.html" class="hover:text-white">Contact Us</a></li>
+                    <li><a href="about.html" class="hover:text-white">FAQs</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-4">Contact</h4>
+                <ul class="text-gray-400 text-sm space-y-2">
+                    <li>999, Vijay Auto Avenue, Ajith Motor City, Thalapathy Nadu-999999.</li>
+                    <li>support@autohub.com</li>
+                    <li>+91 9876543210</li>
+                </ul>
+            </div>
+        </div>
+        <p class="text-center text-gray-500 text-sm">&copy; 2026 AutoHub Marketplace</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="./vehicles-data.js"></script>
+    <script src="./listing.js"></script>
+</body>
+
+</html>
